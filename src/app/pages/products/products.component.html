@@ -3,7 +3,12 @@
     <div class="col-2">
       <h5>Category</h5>
       @for (item of categoryList$ | async ; track $index) {
-        <button class="btn btn-success mt-2" (click)="getProductByCategory(item.categoryId)">{{item.categoryName}}</button>
+        <button 
+          class="btn btn-success m-1" 
+          (click)="getProductByCategory(item.categoryId)"
+        >
+          {{item.categoryName}}
+        </button>
       }
     </div>
     <div class="col-10">
@@ -18,9 +23,14 @@
               >
               <span class="category-badge">{{item.categoryName}}</span>
               <div class="card-body">
-                  <h5 class="card-title">{{item.productName}}</h5> 
-                  <p class="product-price">{{item.productPrice}}</p>
-                  <button class="btn add-to-cart-btn">Add to Cart</button>
+                <h5 class="card-title">{{item.productName}}</h5> 
+                <p class="product-price">${{item.productPrice}}</p>
+                <button 
+                  class="btn add-to-cart-btn" 
+                  (click)="onAddToCart(item.productId)"
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           </div>
